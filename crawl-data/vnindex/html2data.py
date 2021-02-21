@@ -3,7 +3,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 
-with open('data.html', 'r') as f:
+with open('datafull.html', 'r') as f:
 
     contents = f.read()
 
