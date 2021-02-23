@@ -17,12 +17,13 @@ for file_name in os.listdir(data_folder):
     year = name[:4]
     month = name[4:6]
     day = name[6:8]
-    # date = "/".join([day, month, year])
 
-    date 
+    date_news = datetime.datetime(int(year), int(month), int(day))
+    date_price = date_news + datetime.timedelta(days=1)
+    date_price_str = date_price.strftime("%d/%m/%Y")
+    # print(date_price_str)
 
-
-    price = df[df['date']==date].change.tolist()
+    price = df[df['date']==date_price_str].change.tolist()
     if len(price) > 0:
         price = float(price[0].replace("%", ""))
 
@@ -34,10 +35,10 @@ for file_name in os.listdir(data_folder):
             dst = "labeled-data/" + file_name.replace(".txt", "_1.txt")
         else:
             dst = "labeled-data/" + file_name.replace(".txt", "_2.txt")
-
-        # shutil.copy(src, dst)
             print(dst)
+
+        shutil.copy(src, dst)
+            
 
     else:
         continue
-        
